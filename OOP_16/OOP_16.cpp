@@ -269,4 +269,10 @@ int main()
         }
     }
 
+    for (auto hero : heroes) {
+        IFlyable* f = dynamic_cast <IBad*> (hero);
+        if (f != nullptr) {
+            f->Fly();
+        }
+    }
   }
