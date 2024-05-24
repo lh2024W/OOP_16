@@ -1,24 +1,45 @@
-﻿// OOP_16.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+// OOP_16.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
-class MarvelUniverse {};
 
 class Ability abstract {};
 
-class Good abstract {};
+class Good abstract {
+    SuperHero* SuperHero;
+};
 
-class Bad abstract {};
+class Bad abstract {
+    SuperHero* SuperHero;
+};
 
-class Human abstract {};
+class Human abstract {
+    SuperHero* SuperHero;
+};
 
-class Animal abstract {};
+class Animal abstract {
+    SuperHero* SuperHero;
+};
 
-class God abstract {};
+class God abstract {
+    SuperHero* SuperHero;
+};
 
-class SuperHero abstract {};
+class SuperHero abstract {
+    vector <SuperHero*> superheroes;
+public:
+    void AddSuperHero(SuperHero* superhero) {
+        superheroes.push_back(superhero);
+    }
+    ~SuperHero() {
+        for (auto superhero : superheroes) {
+            delete superhero;
+        }
+    }
+};
 
 ////////////////////////////////////////////////////////
 
@@ -165,24 +186,29 @@ public:
     }
 
     virtual void Jump() {
-        cout << "Капитан Америка пригает.../n";
+        cout << "Капитан Америка прыгает.../n";
     }
 };
 
-class Thor : public SuperHero, Bad, God, public IDarknessManipulationable { // Тор
+class Thor : public SuperHero, public IDarknessManipulationable { // Тор
 public:
-    virtual void Gipnisis() {
+    Thor() {
+        cout << "Тор создался.../n";
+    }
+    virtual void Gipnosis() {
         cout << "Тор манипулирует темной сущностью человека.../n";
     }
-
 };
 
 int main()
 {
     setlocale(0, "");
+    //Thor Thor;
+    SuperHero* s;
+    //s->AddSuperHero(&Thor);
 
-    Mystic m;
-    m.Copy();
+    //s = new Thor;
+    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
