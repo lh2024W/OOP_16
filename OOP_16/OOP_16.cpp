@@ -4,7 +4,6 @@ using namespace std;
 
 class Ability abstract {};
 
-// быть хорошим, или плохим - это интерфейсы, там указатель на супер-героя не обязателен
 __interface IGood {
     void DoNiceThings();
 };
@@ -15,9 +14,8 @@ __interface IBad {
 
 class Race abstract {}; // раса
 
-// людей, зверей, богов и ТД можно вынести в своеобразную расу
 class Human abstract : public Race {
-    // SuperHero* SuperHero; // тут тоже самое, указатель на супер-героя не нужен
+    // SuperHero* SuperHero; 
 };
 
 class Animal abstract : public Race {
@@ -29,15 +27,12 @@ class God abstract : public Race {
 };
 
 class SuperHero abstract {
-    // тут скорее всего будут различные умения и сверх-способности
     vector <Ability*> abilities;
 public:
     void AddAbility(Ability* ability) {
         abilities.push_back(ability);
     }
     ~SuperHero() {
-        // ability будет уничтожаться отдельно, вне текущего класса
-        // тело в деструкторе не нужно
     }
 };
 
@@ -227,7 +222,6 @@ public:
     Thor() {
         cout << "Тор создался...\n";
     }
-    // вот это я долго искал :)) Gipnosis / Hypnosis :))
     virtual void Hypnosis() {
         cout << "Тор манипулирует тёмной сущностью человека...\n";
     }
